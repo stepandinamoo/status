@@ -4,8 +4,6 @@ app = Flask(__name__)
 
 current_status = "off"
 
-last_command = ""
-
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
@@ -145,10 +143,9 @@ HTML_TEMPLATE = '''
 </html>
 '''
 
-
 @app.route('/')
 def index():
-    global current_status, last_command
+    global current_status
 
     status_param = request.args.get('status')
     command_param = request.args.get('command')
@@ -173,17 +170,4 @@ def index():
 
     return render_template_string(HTML_TEMPLATE, status=current_status, message=message)
 
-
-if __name__ == '__main__':
-    print("\n" + "=" * 50)
-    print("Сервер запущен на порту 80!")
-    print("Откройте: http://localhost:80")
-    print("\nДоступные команды:")
-    print("   ?status=on   - Включить")
-    print("   ?status=off  - Выключить")
-    print("   ?command=1   - Команда 1")
-    print("   ?command=2   - Команда 2")
-    print("   ?command=3   - Команда 3")
-    print("=" * 50 + "\n")
-
-    app.run(debug=True, host='0.0.0.0', port=80)
+app.run(debug=True, host='0.0.0.0', port=80)
