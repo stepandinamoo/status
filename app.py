@@ -176,8 +176,8 @@ def index():
 
 if __name__ == '__main__':
     print("\n" + "=" * 50)
-    print("Сервер запущен на порту 3000!")
-    print("Откройте: http://localhost:3000")
+    print("Сервер запущен на порту 80!")
+    print("Откройте: http://localhost:80")
     print("\nДоступные команды:")
     print("   ?status=on   - Включить")
     print("   ?status=off  - Выключить")
